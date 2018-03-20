@@ -15,7 +15,7 @@ from astropy.io import fits
 
 from desispec.io.util import fitsheader
 
-def write_coadd_spectra(outfile, coadd_spectra, fiberdata, simspecfile,
+def write_coadd_spectra(outfile, coadd_spectra, fiberdata, metadata, simspecfile,
                         objtype=None, units=None):
     """
     Write the output of the full brz coadded spectra to a fits file.
@@ -35,14 +35,18 @@ def write_coadd_spectra(outfile, coadd_spectra, fiberdata, simspecfile,
     metadict = {'NIGHT': sshdu[0].header['NIGHT'],
                 'EXPID': sshdu[0].header['EXPID'],
                 'TILEID': sshdu[0].header['TILEID']}
-    
-    if not objtype == None:
-        metadict['OBJTYPE'] = objtype
-    
+   
+    # Add other metadata
+    # TODO: dump all metadata from Table into metadict
+    metadict['REDSHIFT'] = metadata['REDSHIFT']
+    metadict['OBJTYPE']  = metadata['OBJTYPE']
+
     # metadata goes in empty primary HD
     hdr = fitsheader(metadict)
     all_hdus.append(fits.PrimaryHDU(header=hdr))
-    
+
+    # Save redshift and galaxy type
+
     # fiberdata not used currently 
 
     # Wavelength data

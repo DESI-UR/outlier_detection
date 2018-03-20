@@ -127,5 +127,5 @@ for n in range(nadd):
 
     # And write the output
     outfile = args.outdir + "spectra-{:05d}.fits".format(n)
-    write_coadd_spectra(outfile, coadd_all_bands, fibermap[n], simspecfile)
+    write_coadd_spectra(outfile, coadd_all_bands, fibermap[n], meta[n], simspecfile)
     print('written to {}'.format(outfile))
