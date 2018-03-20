@@ -77,7 +77,7 @@ rawdata_dir = desispec.io.rawdata_root()
 os.system('find {} | sort'.format(rawdata_dir))
 
 fiberfile   = desispec.io.findfile('fibermap', night=args.night, expid=args.expid)
-simspecfile = desispec.io.findfile('simspec',  night=args.night, expid=args.expid)
+simspecfile = desisim.io.findfile('simspec',  night=args.night, expid=args.expid)
 
 # Now we simulate the spectra using quickgen
 quickgen.main(quickgen.parse(['--simspec', simspecfile,
