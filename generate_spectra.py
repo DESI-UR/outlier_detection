@@ -79,16 +79,6 @@ os.system('find {} | sort'.format(rawdata_dir))
 fiberfile   = desispec.io.findfile('fibermap', night=args.night, expid=args.expid)
 simspecfile = desispec.io.findfile('simspec',  night=args.night, expid=args.expid)
 
-print('Reading fibermap file {}'.format(fiberfile))
-hdu = fits.open(fiberfile)
-fibermap = Table(hdu['FIBERMAP'].data)
-hdu.close()
-
-print('Reading simspec file {}'.format(simspec))
-hdu = fits.open(simspecfile)
-meta = Table(hdu['TRUTH'].data)
-hdu.close()
-
 # Now we simulate the spectra using quickgen
 quickgen.main(quickgen.parse(['--simspec', simspecfile,
                               '--fibermap', fiberfile])
