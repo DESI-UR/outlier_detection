@@ -13,12 +13,6 @@
 import os
 import argparse
 
-import numpy as np
-import matplotlib as mpl
-# Avoid backend issues
-mpl.use('TkAgg') 
-import matplotlib.pyplot as plt
-
 from astropy.io import fits
 from astropy.table import Table
 
