@@ -29,10 +29,6 @@ from write_spectra import write_coadd_spectra
 p = argparse.ArgumentParser(description="Galaxy spectra generator with SN injection")
 p.add_argument("-o", "--outdir", dest="outdir", default="./output/", type=str,
                 help="Path to output directory")
-p.add_argument("-f", "--flavor", dest="flavor", default='dark', action='store', type=str,
-                choices=['dark', 'gray', 'grey', 'bright', 'bgs', 'mws', 'lrg', 
-                            'elg', 'qso', 'std', 'arc', 'flat'], # all options
-                help="Sky-brightness model and distribution of targets")
 p.add_argument("-d", "--night", dest="night", default="20190101", type=str,
                 help="Night of observation")
 p.add_argument("-e", "--expid", dest="expid", default=0, type=int,
