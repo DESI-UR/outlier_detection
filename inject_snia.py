@@ -22,8 +22,7 @@ from astropy.time import Time
 
 from desispec.interpolation import resample_flux
 
-p = argparse.ArgumentParser(description="Inject a supernova template into a galaxy
-spectrum")
+p = argparse.ArgumentParser(description="Inject a supernova template into a galaxy spectrum")
 p.add_argument("-g", "--galaxy", dest="args.galaxy_file", type=str,
                 help="FITS file containing galaxy spectrum")
 p.add_argument("-s", "--sntemp", dest="args.sn_template", type=str,
