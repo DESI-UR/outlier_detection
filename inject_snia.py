@@ -64,12 +64,15 @@ for sn_spectra in sn_data[sn_name]['spectra']:
     sn_spectra_data = np.array(sn_spectra['data'])
     sn_wave = np.array(sn_spectra_data[:,0], dtype=np.float32)
     sn_flux = np.array(sn_spectra_data[:,1], dtype=np.float32)
-    
-    if np.max(sn_wave) < 9000 or np.min(sn_wave) > 3000:
+   
+	if np.max(wave) < 9800 or np.min(wave) > 3600: 
         continue
 
-    sn_epoch = sn_peak_mjd - float(sn_time)
-    sn_epochs.append(np.array(sn_epoch, dtype=np.float32))
+    sn_epoch = float(sn_time) - sn_peak_mjd 
+    if sn_epoch > 200:
+		continue  
+	
+	sn_epochs.append(sn_epoch)
     sn_waves.append(np.array(sn_wave, dtype=np.float32))
     sn_fluxes.append(np.array(sn_flux, dtype=np.float32))
     
