@@ -8,7 +8,7 @@
 # Make sure you have the desi environment setup before running  # 
 # ------------------------------------------------------------- #
 # Author: Ryan Rubenzahl                                        #
-# Last edit: 3/19/18                                            #
+# Last edit: 3/28/18                                            #
 #################################################################
 
 import os
@@ -81,7 +81,7 @@ cframes = {camera: [] for camera in cameras}
 # read the data for each camera and store in dictionary
 for cam in cameras:
     for i in range(0, nspec, 500):
-        camera = cam +  "{}".format(i/500)
+        camera = cam +  "{}".format(int(i/500))
 
         cframefile = desispec.io.findfile('cframe', night=args.night, expid=args.expid, camera=camera)
         print('Reading {}'.format(cframefile))
@@ -122,6 +122,6 @@ for n in range(nadd):
     print('{}/{} coadded'.format(n+1, nadd))
 
     # And write the output
-    outfile = args.outdir + "spectra-{:05d}.fits".format(n)
+    outfile = args.outdir + "spectra-%s-expid%03d-%05d.fits" % (args.night, args.expid, n)
     write_coadd_spectra(outfile, coadd_all_bands, fibermap[n], meta[n], simspecfile)
     print('written to {}'.format(outfile))
