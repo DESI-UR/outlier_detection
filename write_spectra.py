@@ -7,7 +7,7 @@
 # Make sure you have the desi environment setup before running  # 
 # ------------------------------------------------------------- #
 # Author: Ryan Rubenzahl                                        #
-# Last edit: 3/19/18                                            #
+# Last edit: 4/12/18                                            #
 #################################################################
 import os
 
@@ -15,7 +15,7 @@ from astropy.io import fits
 
 from desispec.io.util import fitsheader
 
-def write_coadd_spectra(outfile, coadd_spectra, fiberdata, metadata, simspecfile, units=None):
+def write_coadd_spectra(outfile, coadd_spectra, metadata, simspecfile, fibermap=None, units=None):
     """
     Write the output of the full brz coadded spectra to a fits file.
     Include the truth and metadata from fiberfile and simspecfile
@@ -36,8 +36,8 @@ def write_coadd_spectra(outfile, coadd_spectra, fiberdata, metadata, simspecfile
                 'TILEID': sshdu[0].header['TILEID'],
                 'HAS_SN': False}
    
-    # Add other metadata
-    # TODO: dump all metadata from Table into metadict
+    # Add other useful metadata
+    metadict['MAG']      = metadata['MAG']
     metadict['REDSHIFT'] = metadata['REDSHIFT']
     metadict['OBJTYPE']  = metadata['OBJTYPE']
 
