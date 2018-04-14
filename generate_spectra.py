@@ -62,8 +62,8 @@ print('     (without knowing that it was simulated)')
 print ('Pipeline will write processed data to {}'.format(desispec.io.specprod_root()))
 
 # Generate the fibermap and specsim files needed by quickgen
-# fibermap = table of simulated information about the position of each target in the DESI focal plane
-# simspec  = "truth" table of spectra and the intrinsic properties of each object (e.g. redshift,
+# fibermap: table of simulated information about the position of each target in the DESI focal plane
+# simspec:  "truth" table of spectra and the intrinsic properties of each object (e.g. redshift,
 #               noiseless photometry, [OII] flux, etc.)
 # If you want to use your own mix of objects, you need to write your own fibermap and specsim files
 # following the particular format (rather than calling new_exposure)
